@@ -1,0 +1,34 @@
+﻿@model PI08_aplikacija.Models.Hrana_Životinja
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hrana_Životinja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Hrana.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Hrana.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Životinja.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Životinja.Ime)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

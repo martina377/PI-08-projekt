@@ -1,0 +1,112 @@
+﻿@model PI08_aplikacija.Models.Stroj
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Stroj</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlasnik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlasnik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nabavna_vrijednost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nabavna_vrijednost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Trenutna_vrijednost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Trenutna_vrijednost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dodatna_oprema)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dodatna_oprema)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Korištenje_od)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Korištenje_od)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Korištenje_do)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Korištenje_do)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lokacija_korištenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lokacija_korištenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zarada_od_rada_korištenja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zarada_od_rada_korištenja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Farma.Farma1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farma.Farma1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kupnja.Vrsta_proizvoda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kupnja.Vrsta_proizvoda)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

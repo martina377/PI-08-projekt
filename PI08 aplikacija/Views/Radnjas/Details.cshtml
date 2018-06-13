@@ -1,0 +1,66 @@
+﻿@model PI08_aplikacija.Models.Radnja
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Radnja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trosak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trosak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dobit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dobit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pocetak_radnje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pocetak_radnje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.kraj_radnje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.kraj_radnje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zemljište.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zemljište.Naziv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_radnje }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

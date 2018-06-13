@@ -1,0 +1,77 @@
+﻿@model IEnumerable<PI08_aplikacija.Models.Biljke>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Biljke</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </th>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Sadnja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Količina_zasađene)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Berba)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Količina_dobivenih_plodova)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Radnja.naziv)
+        </th>
+        <th>
+            Lokacija
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vrsta)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Sadnja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Količina_zasađene)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Berba)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Količina_dobivenih_plodova)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Radnja.naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zemljište.Naziv)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Biljke }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Biljke }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Biljke })
+        </td>
+    </tr>
+}
+
+</table>

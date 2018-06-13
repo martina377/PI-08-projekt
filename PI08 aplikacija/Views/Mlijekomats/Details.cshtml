@@ -1,0 +1,74 @@
+﻿@model PI08_aplikacija.Models.Mlijekomat
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Mlijekomat</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Lokacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lokacija)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Punjenje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Punjenje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pražnjenje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pražnjenje)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Troškovi_održavanja)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Troškovi_održavanja)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zarada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zarada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kapacitet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kapacitet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Farma.Farma1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farma.Farma1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Mlijekomat }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

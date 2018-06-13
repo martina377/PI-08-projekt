@@ -1,0 +1,1086 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Biljke">
+          <Key>
+            <PropertyRef Name="ID_Biljke" />
+          </Key>
+          <Property Name="ID_Biljke" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vrsta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sadnja" Type="varchar" MaxLength="50" />
+          <Property Name="Količina_zasađene" Type="int" Nullable="false" />
+          <Property Name="Berba" Type="varchar" MaxLength="50" />
+          <Property Name="Količina_dobivenih_plodova" Type="int" Nullable="false" />
+          <Property Name="ID_Zemljište" Type="int" />
+          <Property Name="id_Radnja" Type="int" />
+        </EntityType>
+        <EntityType Name="Farma">
+          <Key>
+            <PropertyRef Name="ID_Farma" />
+          </Key>
+          <Property Name="ID_Farma" Type="int" Nullable="false" />
+          <Property Name="Farma" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lokacija" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vlasnik" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hrana">
+          <Key>
+            <PropertyRef Name="ID_Hrana" />
+          </Key>
+          <Property Name="ID_Hrana" Type="int" Nullable="false" />
+          <Property Name="Vrsta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Količina" Type="int" Nullable="false" />
+          <Property Name="Troškovi" Type="float" Nullable="false" />
+          <Property Name="Vrijeme_kupovine" Type="datetime" Nullable="false" />
+          <Property Name="ID_Kupnja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hrana-Životinja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Životinja" Type="int" Nullable="false" />
+          <Property Name="ID_Hrana" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kupnja">
+          <Key>
+            <PropertyRef Name="ID_Kupnja" />
+          </Key>
+          <Property Name="ID_Kupnja" Type="int" Nullable="false" />
+          <Property Name="Vrsta_proizvoda" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Količina" Type="int" Nullable="false" />
+          <Property Name="Cijena" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mlijekomat">
+          <Key>
+            <PropertyRef Name="ID_Mlijekomat" />
+          </Key>
+          <Property Name="ID_Mlijekomat" Type="int" Nullable="false" />
+          <Property Name="Lokacija" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Punjenje" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pražnjenje" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Troškovi_održavanja" Type="float" Nullable="false" />
+          <Property Name="Zarada" Type="float" Nullable="false" />
+          <Property Name="Kapacitet" Type="int" Nullable="false" />
+          <Property Name="ID_Farma" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prodaja">
+          <Key>
+            <PropertyRef Name="ID_Prodaja" />
+          </Key>
+          <Property Name="ID_Prodaja" Type="int" Nullable="false" />
+          <Property Name="Lokacija" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Količina" Type="int" Nullable="false" />
+          <Property Name="Zarada" Type="float" Nullable="false" />
+          <Property Name="Proizvod" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Prodaja-Životinje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Prodaja" Type="int" Nullable="false" />
+          <Property Name="ID_Životinje" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Prod-biljke">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_Biljke" Type="int" Nullable="false" />
+          <Property Name="ID_Prodaja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rad za drugoga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="datum vrijeme" Type="date" />
+          <Property Name="zarada" Type="float" />
+          <Property Name="trajanje" Type="float" />
+          <Property Name="id_stroj" Type="int" />
+        </EntityType>
+        <EntityType Name="Radnja">
+          <Key>
+            <PropertyRef Name="id_radnje" />
+          </Key>
+          <Property Name="id_radnje" Type="int" Nullable="false" />
+          <Property Name="naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="trosak" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="dobit" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pocetak_radnje" Type="date" Nullable="false" />
+          <Property Name="kraj_radnje" Type="date" Nullable="false" />
+          <Property Name="ID_Zemljište" Type="int" />
+        </EntityType>
+        <EntityType Name="Stroj">
+          <Key>
+            <PropertyRef Name="ID_Stroj" />
+          </Key>
+          <Property Name="ID_Stroj" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vlasnik" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nabavna_vrijednost" Type="float" Nullable="false" />
+          <Property Name="Trenutna_vrijednost" Type="float" Nullable="false" />
+          <Property Name="Dodatna_oprema" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Korištenje_od" Type="datetime" Nullable="false" />
+          <Property Name="Korištenje_do" Type="datetime" Nullable="false" />
+          <Property Name="Lokacija_korištenja" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Zarada_od_rada_korištenja" Type="float" Nullable="false" />
+          <Property Name="ID_Farma" Type="int" Nullable="false" />
+          <Property Name="ID_Kupnja" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Zemljište">
+          <Key>
+            <PropertyRef Name="ID_Zemljište" />
+          </Key>
+          <Property Name="ID_Zemljište" Type="int" Nullable="false" />
+          <Property Name="Naziv" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Lokacija" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Korišteno_od" Type="date" Nullable="false" />
+          <Property Name="Korišteno_do" Type="date" Nullable="false" />
+          <Property Name="Pogodnost" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_Farma" Type="int" Nullable="false" />
+          <Property Name="Vlasnik" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Životinja">
+          <Key>
+            <PropertyRef Name="ID_Životinje" />
+          </Key>
+          <Property Name="ID_Životinje" Type="int" Nullable="false" />
+          <Property Name="Ime" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vrsta" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Proizvodi" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Označena" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Biljke_Radnja">
+          <End Role="Radnja" Type="Self.Radnja" Multiplicity="0..1" />
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnja">
+              <PropertyRef Name="id_radnje" />
+            </Principal>
+            <Dependent Role="Biljke">
+              <PropertyRef Name="id_Radnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Biljke_Zemljište">
+          <End Role="Zemljište" Type="Self.Zemljište" Multiplicity="0..1" />
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zemljište">
+              <PropertyRef Name="ID_Zemljište" />
+            </Principal>
+            <Dependent Role="Biljke">
+              <PropertyRef Name="ID_Zemljište" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana_Kupnja">
+          <End Role="Kupnja" Type="Self.Kupnja" Multiplicity="1" />
+          <End Role="Hrana" Type="Self.Hrana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupnja">
+              <PropertyRef Name="ID_Kupnja" />
+            </Principal>
+            <Dependent Role="Hrana">
+              <PropertyRef Name="ID_Kupnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana-Životinja_Hrana">
+          <End Role="Hrana" Type="Self.Hrana" Multiplicity="1" />
+          <End Role="Hrana-Životinja" Type="Self.Hrana-Životinja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hrana">
+              <PropertyRef Name="ID_Hrana" />
+            </Principal>
+            <Dependent Role="Hrana-Životinja">
+              <PropertyRef Name="ID_Hrana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana-Životinja_Životinja">
+          <End Role="Životinja" Type="Self.Životinja" Multiplicity="1" />
+          <End Role="Hrana-Životinja" Type="Self.Hrana-Životinja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Životinja">
+              <PropertyRef Name="ID_Životinje" />
+            </Principal>
+            <Dependent Role="Hrana-Životinja">
+              <PropertyRef Name="ID_Životinja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mlijekomat_Farma">
+          <End Role="Farma" Type="Self.Farma" Multiplicity="1" />
+          <End Role="Mlijekomat" Type="Self.Mlijekomat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farma">
+              <PropertyRef Name="ID_Farma" />
+            </Principal>
+            <Dependent Role="Mlijekomat">
+              <PropertyRef Name="ID_Farma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodaja-Životinje_Prodaja">
+          <End Role="Prodaja" Type="Self.Prodaja" Multiplicity="1" />
+          <End Role="Prodaja-Životinje" Type="Self.Prodaja-Životinje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodaja">
+              <PropertyRef Name="ID_Prodaja" />
+            </Principal>
+            <Dependent Role="Prodaja-Životinje">
+              <PropertyRef Name="ID_Prodaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodaja-Životinje_Životinja">
+          <End Role="Životinja" Type="Self.Životinja" Multiplicity="1" />
+          <End Role="Prodaja-Životinje" Type="Self.Prodaja-Životinje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Životinja">
+              <PropertyRef Name="ID_Životinje" />
+            </Principal>
+            <Dependent Role="Prodaja-Životinje">
+              <PropertyRef Name="ID_Životinje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod-biljke_Biljke">
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="1" />
+          <End Role="Prod-biljke" Type="Self.Prod-biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Principal>
+            <Dependent Role="Prod-biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod-biljke_Biljke1">
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="1" />
+          <End Role="Prod-biljke" Type="Self.Prod-biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Principal>
+            <Dependent Role="Prod-biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod-biljke_Prodaja">
+          <End Role="Prodaja" Type="Self.Prodaja" Multiplicity="1" />
+          <End Role="Prod-biljke" Type="Self.Prod-biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodaja">
+              <PropertyRef Name="ID_Prodaja" />
+            </Principal>
+            <Dependent Role="Prod-biljke">
+              <PropertyRef Name="ID_Prodaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rad za drugog_Stroj">
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="0..1" />
+          <End Role="Rad za drugoga" Type="Self.Rad za drugoga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stroj">
+              <PropertyRef Name="ID_Stroj" />
+            </Principal>
+            <Dependent Role="Rad za drugoga">
+              <PropertyRef Name="id_stroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Radnja_Zemljište">
+          <End Role="Zemljište" Type="Self.Zemljište" Multiplicity="0..1" />
+          <End Role="Radnja" Type="Self.Radnja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zemljište">
+              <PropertyRef Name="ID_Zemljište" />
+            </Principal>
+            <Dependent Role="Radnja">
+              <PropertyRef Name="ID_Zemljište" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stroj_Farma">
+          <End Role="Farma" Type="Self.Farma" Multiplicity="1" />
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farma">
+              <PropertyRef Name="ID_Farma" />
+            </Principal>
+            <Dependent Role="Stroj">
+              <PropertyRef Name="ID_Farma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stroj_Kupnja">
+          <End Role="Kupnja" Type="Self.Kupnja" Multiplicity="1" />
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupnja">
+              <PropertyRef Name="ID_Kupnja" />
+            </Principal>
+            <Dependent Role="Stroj">
+              <PropertyRef Name="ID_Kupnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Biljke" EntityType="Self.Biljke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Farma" EntityType="Self.Farma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hrana" EntityType="Self.Hrana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Hrana-Životinja" EntityType="Self.Hrana-Životinja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kupnja" EntityType="Self.Kupnja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mlijekomat" EntityType="Self.Mlijekomat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prodaja" EntityType="Self.Prodaja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prodaja-Životinje" EntityType="Self.Prodaja-Životinje" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prod-biljke" EntityType="Self.Prod-biljke" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rad za drugoga" EntityType="Self.Rad za drugoga" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Radnja" EntityType="Self.Radnja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stroj" EntityType="Self.Stroj" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zemljište" EntityType="Self.Zemljište" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Životinja" EntityType="Self.Životinja" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Biljke_Radnja" Association="Self.FK_Biljke_Radnja">
+            <End Role="Radnja" EntitySet="Radnja" />
+            <End Role="Biljke" EntitySet="Biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Biljke_Zemljište" Association="Self.FK_Biljke_Zemljište">
+            <End Role="Zemljište" EntitySet="Zemljište" />
+            <End Role="Biljke" EntitySet="Biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana_Kupnja" Association="Self.FK_Hrana_Kupnja">
+            <End Role="Kupnja" EntitySet="Kupnja" />
+            <End Role="Hrana" EntitySet="Hrana" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana-Životinja_Hrana" Association="Self.FK_Hrana-Životinja_Hrana">
+            <End Role="Hrana" EntitySet="Hrana" />
+            <End Role="Hrana-Životinja" EntitySet="Hrana-Životinja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana-Životinja_Životinja" Association="Self.FK_Hrana-Životinja_Životinja">
+            <End Role="Životinja" EntitySet="Životinja" />
+            <End Role="Hrana-Životinja" EntitySet="Hrana-Životinja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mlijekomat_Farma" Association="Self.FK_Mlijekomat_Farma">
+            <End Role="Farma" EntitySet="Farma" />
+            <End Role="Mlijekomat" EntitySet="Mlijekomat" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodaja-Životinje_Prodaja" Association="Self.FK_Prodaja-Životinje_Prodaja">
+            <End Role="Prodaja" EntitySet="Prodaja" />
+            <End Role="Prodaja-Životinje" EntitySet="Prodaja-Životinje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodaja-Životinje_Životinja" Association="Self.FK_Prodaja-Životinje_Životinja">
+            <End Role="Životinja" EntitySet="Životinja" />
+            <End Role="Prodaja-Životinje" EntitySet="Prodaja-Životinje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod-biljke_Biljke" Association="Self.FK_Prod-biljke_Biljke">
+            <End Role="Biljke" EntitySet="Biljke" />
+            <End Role="Prod-biljke" EntitySet="Prod-biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod-biljke_Biljke1" Association="Self.FK_Prod-biljke_Biljke1">
+            <End Role="Biljke" EntitySet="Biljke" />
+            <End Role="Prod-biljke" EntitySet="Prod-biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod-biljke_Prodaja" Association="Self.FK_Prod-biljke_Prodaja">
+            <End Role="Prodaja" EntitySet="Prodaja" />
+            <End Role="Prod-biljke" EntitySet="Prod-biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rad za drugog_Stroj" Association="Self.FK_Rad za drugog_Stroj">
+            <End Role="Stroj" EntitySet="Stroj" />
+            <End Role="Rad za drugoga" EntitySet="Rad za drugoga" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Radnja_Zemljište" Association="Self.FK_Radnja_Zemljište">
+            <End Role="Zemljište" EntitySet="Zemljište" />
+            <End Role="Radnja" EntitySet="Radnja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stroj_Farma" Association="Self.FK_Stroj_Farma">
+            <End Role="Farma" EntitySet="Farma" />
+            <End Role="Stroj" EntitySet="Stroj" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stroj_Kupnja" Association="Self.FK_Stroj_Kupnja">
+            <End Role="Kupnja" EntitySet="Kupnja" />
+            <End Role="Stroj" EntitySet="Stroj" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Biljke">
+          <Key>
+            <PropertyRef Name="ID_Biljke" />
+          </Key>
+          <Property Name="ID_Biljke" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Sadnja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Količina_zasađene" Type="Int32" Nullable="false" />
+          <Property Name="Berba" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Količina_dobivenih_plodova" Type="Int32" Nullable="false" />
+          <Property Name="ID_Zemljište" Type="Int32" />
+          <Property Name="id_Radnja" Type="Int32" />
+          <NavigationProperty Name="Radnja" Relationship="Self.FK_Biljke_Radnja" FromRole="Biljke" ToRole="Radnja" />
+          <NavigationProperty Name="Zemljište" Relationship="Self.FK_Biljke_Zemljište" FromRole="Biljke" ToRole="Zemljište" />
+          <NavigationProperty Name="Prod_biljke" Relationship="Self.FK_Prod_biljke_Biljke" FromRole="Biljke" ToRole="Prod_biljke" />
+          <NavigationProperty Name="Prod_biljke1" Relationship="Self.FK_Prod_biljke_Biljke1" FromRole="Biljke" ToRole="Prod_biljke" />
+        </EntityType>
+        <EntityType Name="Farma">
+          <Key>
+            <PropertyRef Name="ID_Farma" />
+          </Key>
+          <Property Name="ID_Farma" Type="Int32" Nullable="false" />
+          <Property Name="Farma1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lokacija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vlasnik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Mlijekomats" Relationship="Self.FK_Mlijekomat_Farma" FromRole="Farma" ToRole="Mlijekomat" />
+          <NavigationProperty Name="Strojs" Relationship="Self.FK_Stroj_Farma" FromRole="Farma" ToRole="Stroj" />
+        </EntityType>
+        <EntityType Name="Hrana">
+          <Key>
+            <PropertyRef Name="ID_Hrana" />
+          </Key>
+          <Property Name="ID_Hrana" Type="Int32" Nullable="false" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Količina" Type="Int32" Nullable="false" />
+          <Property Name="Troškovi" Type="Double" Nullable="false" />
+          <Property Name="Vrijeme_kupovine" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ID_Kupnja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kupnja" Relationship="Self.FK_Hrana_Kupnja" FromRole="Hrana" ToRole="Kupnja" />
+          <NavigationProperty Name="Hrana_Životinja" Relationship="Self.FK_Hrana_Životinja_Hrana" FromRole="Hrana" ToRole="Hrana_Životinja" />
+        </EntityType>
+        <EntityType Name="Hrana_Životinja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Životinja" Type="Int32" Nullable="false" />
+          <Property Name="ID_Hrana" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hrana" Relationship="Self.FK_Hrana_Životinja_Hrana" FromRole="Hrana_Životinja" ToRole="Hrana" />
+          <NavigationProperty Name="Životinja" Relationship="Self.FK_Hrana_Životinja_Životinja" FromRole="Hrana_Životinja" ToRole="Životinja" />
+        </EntityType>
+        <EntityType Name="Kupnja">
+          <Key>
+            <PropertyRef Name="ID_Kupnja" />
+          </Key>
+          <Property Name="ID_Kupnja" Type="Int32" Nullable="false" />
+          <Property Name="Vrsta_proizvoda" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Količina" Type="Int32" Nullable="false" />
+          <Property Name="Cijena" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Hranas" Relationship="Self.FK_Hrana_Kupnja" FromRole="Kupnja" ToRole="Hrana" />
+          <NavigationProperty Name="Strojs" Relationship="Self.FK_Stroj_Kupnja" FromRole="Kupnja" ToRole="Stroj" />
+        </EntityType>
+        <EntityType Name="Mlijekomat">
+          <Key>
+            <PropertyRef Name="ID_Mlijekomat" />
+          </Key>
+          <Property Name="ID_Mlijekomat" Type="Int32" Nullable="false" />
+          <Property Name="Lokacija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Punjenje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pražnjenje" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Troškovi_održavanja" Type="Double" Nullable="false" />
+          <Property Name="Zarada" Type="Double" Nullable="false" />
+          <Property Name="Kapacitet" Type="Int32" Nullable="false" />
+          <Property Name="ID_Farma" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Farma" Relationship="Self.FK_Mlijekomat_Farma" FromRole="Mlijekomat" ToRole="Farma" />
+        </EntityType>
+        <EntityType Name="Prodaja">
+          <Key>
+            <PropertyRef Name="ID_Prodaja" />
+          </Key>
+          <Property Name="ID_Prodaja" Type="Int32" Nullable="false" />
+          <Property Name="Lokacija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Količina" Type="Int32" Nullable="false" />
+          <Property Name="Zarada" Type="Double" Nullable="false" />
+          <Property Name="Proizvod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Prodaja_Životinje" Relationship="Self.FK_Prodaja_Životinje_Prodaja" FromRole="Prodaja" ToRole="Prodaja_Životinje" />
+          <NavigationProperty Name="Prod_biljke" Relationship="Self.FK_Prod_biljke_Prodaja" FromRole="Prodaja" ToRole="Prod_biljke" />
+        </EntityType>
+        <EntityType Name="Prodaja_Životinje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Prodaja" Type="Int32" Nullable="false" />
+          <Property Name="ID_Životinje" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Prodaja" Relationship="Self.FK_Prodaja_Životinje_Prodaja" FromRole="Prodaja_Životinje" ToRole="Prodaja" />
+          <NavigationProperty Name="Životinja" Relationship="Self.FK_Prodaja_Životinje_Životinja" FromRole="Prodaja_Životinje" ToRole="Životinja" />
+        </EntityType>
+        <EntityType Name="Prod_biljke">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_Biljke" Type="Int32" Nullable="false" />
+          <Property Name="ID_Prodaja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Biljke" Relationship="Self.FK_Prod_biljke_Biljke" FromRole="Prod_biljke" ToRole="Biljke" />
+          <NavigationProperty Name="Biljke1" Relationship="Self.FK_Prod_biljke_Biljke1" FromRole="Prod_biljke" ToRole="Biljke" />
+          <NavigationProperty Name="Prodaja" Relationship="Self.FK_Prod_biljke_Prodaja" FromRole="Prod_biljke" ToRole="Prodaja" />
+        </EntityType>
+        <EntityType Name="Rad_za_drugoga">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="datum_vrijeme" Type="DateTime" Precision="0" />
+          <Property Name="zarada" Type="Double" />
+          <Property Name="trajanje" Type="Double" />
+          <Property Name="id_stroj" Type="Int32" />
+          <NavigationProperty Name="Stroj" Relationship="Self.FK_Rad_za_drugog_Stroj" FromRole="Rad_za_drugoga" ToRole="Stroj" />
+        </EntityType>
+        <EntityType Name="Radnja">
+          <Key>
+            <PropertyRef Name="id_radnje" />
+          </Key>
+          <Property Name="id_radnje" Type="Int32" Nullable="false" />
+          <Property Name="naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="trosak" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="dobit" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="pocetak_radnje" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="kraj_radnje" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ID_Zemljište" Type="Int32" />
+          <NavigationProperty Name="Biljkes" Relationship="Self.FK_Biljke_Radnja" FromRole="Radnja" ToRole="Biljke" />
+          <NavigationProperty Name="Zemljište" Relationship="Self.FK_Radnja_Zemljište" FromRole="Radnja" ToRole="Zemljište" />
+        </EntityType>
+        <EntityType Name="Stroj">
+          <Key>
+            <PropertyRef Name="ID_Stroj" />
+          </Key>
+          <Property Name="ID_Stroj" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vlasnik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nabavna_vrijednost" Type="Double" Nullable="false" />
+          <Property Name="Trenutna_vrijednost" Type="Double" Nullable="false" />
+          <Property Name="Dodatna_oprema" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Korištenje_od" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Korištenje_do" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Lokacija_korištenja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Zarada_od_rada_korištenja" Type="Double" Nullable="false" />
+          <Property Name="ID_Farma" Type="Int32" Nullable="false" />
+          <Property Name="ID_Kupnja" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Farma" Relationship="Self.FK_Stroj_Farma" FromRole="Stroj" ToRole="Farma" />
+          <NavigationProperty Name="Kupnja" Relationship="Self.FK_Stroj_Kupnja" FromRole="Stroj" ToRole="Kupnja" />
+          <NavigationProperty Name="Rad_za_drugoga" Relationship="Self.FK_Rad_za_drugog_Stroj" FromRole="Stroj" ToRole="Rad_za_drugoga" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Zemljište">
+          <Key>
+            <PropertyRef Name="ID_Zemljište" />
+          </Key>
+          <Property Name="ID_Zemljište" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Lokacija" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Korišteno_od" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Korišteno_do" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Pogodnost" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_Farma" Type="Int32" Nullable="false" />
+          <Property Name="Vlasnik" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Biljkes" Relationship="Self.FK_Biljke_Zemljište" FromRole="Zemljište" ToRole="Biljke" />
+          <NavigationProperty Name="Radnjas" Relationship="Self.FK_Radnja_Zemljište" FromRole="Zemljište" ToRole="Radnja" />
+        </EntityType>
+        <EntityType Name="Životinja">
+          <Key>
+            <PropertyRef Name="ID_Životinje" />
+          </Key>
+          <Property Name="ID_Životinje" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Vrsta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Proizvodi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Označena" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Hrana_Životinja" Relationship="Self.FK_Hrana_Životinja_Životinja" FromRole="Životinja" ToRole="Hrana_Životinja" />
+          <NavigationProperty Name="Prodaja_Životinje" Relationship="Self.FK_Prodaja_Životinje_Životinja" FromRole="Životinja" ToRole="Prodaja_Životinje" />
+        </EntityType>
+        <Association Name="FK_Biljke_Radnja">
+          <End Role="Radnja" Type="Self.Radnja" Multiplicity="0..1" />
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Radnja">
+              <PropertyRef Name="id_radnje" />
+            </Principal>
+            <Dependent Role="Biljke">
+              <PropertyRef Name="id_Radnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Biljke_Zemljište">
+          <End Role="Zemljište" Type="Self.Zemljište" Multiplicity="0..1" />
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zemljište">
+              <PropertyRef Name="ID_Zemljište" />
+            </Principal>
+            <Dependent Role="Biljke">
+              <PropertyRef Name="ID_Zemljište" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod_biljke_Biljke">
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="1" />
+          <End Role="Prod_biljke" Type="Self.Prod_biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Principal>
+            <Dependent Role="Prod_biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod_biljke_Biljke1">
+          <End Role="Biljke" Type="Self.Biljke" Multiplicity="1" />
+          <End Role="Prod_biljke" Type="Self.Prod_biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Principal>
+            <Dependent Role="Prod_biljke">
+              <PropertyRef Name="ID_Biljke" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Mlijekomat_Farma">
+          <End Role="Farma" Type="Self.Farma" Multiplicity="1" />
+          <End Role="Mlijekomat" Type="Self.Mlijekomat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farma">
+              <PropertyRef Name="ID_Farma" />
+            </Principal>
+            <Dependent Role="Mlijekomat">
+              <PropertyRef Name="ID_Farma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stroj_Farma">
+          <End Role="Farma" Type="Self.Farma" Multiplicity="1" />
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Farma">
+              <PropertyRef Name="ID_Farma" />
+            </Principal>
+            <Dependent Role="Stroj">
+              <PropertyRef Name="ID_Farma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana_Kupnja">
+          <End Role="Kupnja" Type="Self.Kupnja" Multiplicity="1" />
+          <End Role="Hrana" Type="Self.Hrana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupnja">
+              <PropertyRef Name="ID_Kupnja" />
+            </Principal>
+            <Dependent Role="Hrana">
+              <PropertyRef Name="ID_Kupnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana_Životinja_Hrana">
+          <End Role="Hrana" Type="Self.Hrana" Multiplicity="1" />
+          <End Role="Hrana_Životinja" Type="Self.Hrana_Životinja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Hrana">
+              <PropertyRef Name="ID_Hrana" />
+            </Principal>
+            <Dependent Role="Hrana_Životinja">
+              <PropertyRef Name="ID_Hrana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Hrana_Životinja_Životinja">
+          <End Role="Životinja" Type="Self.Životinja" Multiplicity="1" />
+          <End Role="Hrana_Životinja" Type="Self.Hrana_Životinja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Životinja">
+              <PropertyRef Name="ID_Životinje" />
+            </Principal>
+            <Dependent Role="Hrana_Životinja">
+              <PropertyRef Name="ID_Životinja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stroj_Kupnja">
+          <End Role="Kupnja" Type="Self.Kupnja" Multiplicity="1" />
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kupnja">
+              <PropertyRef Name="ID_Kupnja" />
+            </Principal>
+            <Dependent Role="Stroj">
+              <PropertyRef Name="ID_Kupnja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodaja_Životinje_Prodaja">
+          <End Role="Prodaja" Type="Self.Prodaja" Multiplicity="1" />
+          <End Role="Prodaja_Životinje" Type="Self.Prodaja_Životinje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodaja">
+              <PropertyRef Name="ID_Prodaja" />
+            </Principal>
+            <Dependent Role="Prodaja_Životinje">
+              <PropertyRef Name="ID_Prodaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prod_biljke_Prodaja">
+          <End Role="Prodaja" Type="Self.Prodaja" Multiplicity="1" />
+          <End Role="Prod_biljke" Type="Self.Prod_biljke" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Prodaja">
+              <PropertyRef Name="ID_Prodaja" />
+            </Principal>
+            <Dependent Role="Prod_biljke">
+              <PropertyRef Name="ID_Prodaja" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Prodaja_Životinje_Životinja">
+          <End Role="Životinja" Type="Self.Životinja" Multiplicity="1" />
+          <End Role="Prodaja_Životinje" Type="Self.Prodaja_Životinje" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Životinja">
+              <PropertyRef Name="ID_Životinje" />
+            </Principal>
+            <Dependent Role="Prodaja_Životinje">
+              <PropertyRef Name="ID_Životinje" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Rad_za_drugog_Stroj">
+          <End Role="Stroj" Type="Self.Stroj" Multiplicity="0..1" />
+          <End Role="Rad_za_drugoga" Type="Self.Rad_za_drugoga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stroj">
+              <PropertyRef Name="ID_Stroj" />
+            </Principal>
+            <Dependent Role="Rad_za_drugoga">
+              <PropertyRef Name="id_stroj" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Radnja_Zemljište">
+          <End Role="Zemljište" Type="Self.Zemljište" Multiplicity="0..1" />
+          <End Role="Radnja" Type="Self.Radnja" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zemljište">
+              <PropertyRef Name="ID_Zemljište" />
+            </Principal>
+            <Dependent Role="Radnja">
+              <PropertyRef Name="ID_Zemljište" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PI08Model" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Biljkes" EntityType="Self.Biljke" />
+          <EntitySet Name="Farmas" EntityType="Self.Farma" />
+          <EntitySet Name="Hranas" EntityType="Self.Hrana" />
+          <EntitySet Name="Hrana_Životinja" EntityType="Self.Hrana_Životinja" />
+          <EntitySet Name="Kupnjas" EntityType="Self.Kupnja" />
+          <EntitySet Name="Mlijekomats" EntityType="Self.Mlijekomat" />
+          <EntitySet Name="Prodajas" EntityType="Self.Prodaja" />
+          <EntitySet Name="Prodaja_Životinje" EntityType="Self.Prodaja_Životinje" />
+          <EntitySet Name="Prod_biljke" EntityType="Self.Prod_biljke" />
+          <EntitySet Name="Rad_za_drugogas" EntityType="Self.Rad_za_drugoga" />
+          <EntitySet Name="Radnjas" EntityType="Self.Radnja" />
+          <EntitySet Name="Strojs" EntityType="Self.Stroj" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Zemljište" EntityType="Self.Zemljište" />
+          <EntitySet Name="Životinja" EntityType="Self.Životinja" />
+          <AssociationSet Name="FK_Biljke_Radnja" Association="Self.FK_Biljke_Radnja">
+            <End Role="Radnja" EntitySet="Radnjas" />
+            <End Role="Biljke" EntitySet="Biljkes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Biljke_Zemljište" Association="Self.FK_Biljke_Zemljište">
+            <End Role="Zemljište" EntitySet="Zemljište" />
+            <End Role="Biljke" EntitySet="Biljkes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod_biljke_Biljke" Association="Self.FK_Prod_biljke_Biljke">
+            <End Role="Biljke" EntitySet="Biljkes" />
+            <End Role="Prod_biljke" EntitySet="Prod_biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod_biljke_Biljke1" Association="Self.FK_Prod_biljke_Biljke1">
+            <End Role="Biljke" EntitySet="Biljkes" />
+            <End Role="Prod_biljke" EntitySet="Prod_biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Mlijekomat_Farma" Association="Self.FK_Mlijekomat_Farma">
+            <End Role="Farma" EntitySet="Farmas" />
+            <End Role="Mlijekomat" EntitySet="Mlijekomats" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stroj_Farma" Association="Self.FK_Stroj_Farma">
+            <End Role="Farma" EntitySet="Farmas" />
+            <End Role="Stroj" EntitySet="Strojs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana_Kupnja" Association="Self.FK_Hrana_Kupnja">
+            <End Role="Kupnja" EntitySet="Kupnjas" />
+            <End Role="Hrana" EntitySet="Hranas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana_Životinja_Hrana" Association="Self.FK_Hrana_Životinja_Hrana">
+            <End Role="Hrana" EntitySet="Hranas" />
+            <End Role="Hrana_Životinja" EntitySet="Hrana_Životinja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Hrana_Životinja_Životinja" Association="Self.FK_Hrana_Životinja_Životinja">
+            <End Role="Životinja" EntitySet="Životinja" />
+            <End Role="Hrana_Životinja" EntitySet="Hrana_Životinja" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stroj_Kupnja" Association="Self.FK_Stroj_Kupnja">
+            <End Role="Kupnja" EntitySet="Kupnjas" />
+            <End Role="Stroj" EntitySet="Strojs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodaja_Životinje_Prodaja" Association="Self.FK_Prodaja_Životinje_Prodaja">
+            <End Role="Prodaja" EntitySet="Prodajas" />
+            <End Role="Prodaja_Životinje" EntitySet="Prodaja_Životinje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prod_biljke_Prodaja" Association="Self.FK_Prod_biljke_Prodaja">
+            <End Role="Prodaja" EntitySet="Prodajas" />
+            <End Role="Prod_biljke" EntitySet="Prod_biljke" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Prodaja_Životinje_Životinja" Association="Self.FK_Prodaja_Životinje_Životinja">
+            <End Role="Životinja" EntitySet="Životinja" />
+            <End Role="Prodaja_Životinje" EntitySet="Prodaja_Životinje" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Rad_za_drugog_Stroj" Association="Self.FK_Rad_za_drugog_Stroj">
+            <End Role="Stroj" EntitySet="Strojs" />
+            <End Role="Rad_za_drugoga" EntitySet="Rad_za_drugogas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Radnja_Zemljište" Association="Self.FK_Radnja_Zemljište">
+            <End Role="Zemljište" EntitySet="Zemljište" />
+            <End Role="Radnja" EntitySet="Radnjas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="PI08Model">
+          <EntitySetMapping Name="Biljkes">
+            <EntityTypeMapping TypeName="Model.Biljke">
+              <MappingFragment StoreEntitySet="Biljke">
+                <ScalarProperty Name="ID_Biljke" ColumnName="ID_Biljke" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Sadnja" ColumnName="Sadnja" />
+                <ScalarProperty Name="Količina_zasađene" ColumnName="Količina_zasađene" />
+                <ScalarProperty Name="Berba" ColumnName="Berba" />
+                <ScalarProperty Name="Količina_dobivenih_plodova" ColumnName="Količina_dobivenih_plodova" />
+                <ScalarProperty Name="ID_Zemljište" ColumnName="ID_Zemljište" />
+                <ScalarProperty Name="id_Radnja" ColumnName="id_Radnja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Farmas">
+            <EntityTypeMapping TypeName="Model.Farma">
+              <MappingFragment StoreEntitySet="Farma">
+                <ScalarProperty Name="ID_Farma" ColumnName="ID_Farma" />
+                <ScalarProperty Name="Farma1" ColumnName="Farma" />
+                <ScalarProperty Name="Lokacija" ColumnName="Lokacija" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hranas">
+            <EntityTypeMapping TypeName="Model.Hrana">
+              <MappingFragment StoreEntitySet="Hrana">
+                <ScalarProperty Name="ID_Hrana" ColumnName="ID_Hrana" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="Troškovi" ColumnName="Troškovi" />
+                <ScalarProperty Name="Vrijeme_kupovine" ColumnName="Vrijeme_kupovine" />
+                <ScalarProperty Name="ID_Kupnja" ColumnName="ID_Kupnja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Hrana_Životinja">
+            <EntityTypeMapping TypeName="Model.Hrana_Životinja">
+              <MappingFragment StoreEntitySet="Hrana-Životinja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Životinja" ColumnName="ID_Životinja" />
+                <ScalarProperty Name="ID_Hrana" ColumnName="ID_Hrana" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kupnjas">
+            <EntityTypeMapping TypeName="Model.Kupnja">
+              <MappingFragment StoreEntitySet="Kupnja">
+                <ScalarProperty Name="ID_Kupnja" ColumnName="ID_Kupnja" />
+                <ScalarProperty Name="Vrsta_proizvoda" ColumnName="Vrsta_proizvoda" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mlijekomats">
+            <EntityTypeMapping TypeName="Model.Mlijekomat">
+              <MappingFragment StoreEntitySet="Mlijekomat">
+                <ScalarProperty Name="ID_Mlijekomat" ColumnName="ID_Mlijekomat" />
+                <ScalarProperty Name="Lokacija" ColumnName="Lokacija" />
+                <ScalarProperty Name="Punjenje" ColumnName="Punjenje" />
+                <ScalarProperty Name="Pražnjenje" ColumnName="Pražnjenje" />
+                <ScalarProperty Name="Troškovi_održavanja" ColumnName="Troškovi_održavanja" />
+                <ScalarProperty Name="Zarada" ColumnName="Zarada" />
+                <ScalarProperty Name="Kapacitet" ColumnName="Kapacitet" />
+                <ScalarProperty Name="ID_Farma" ColumnName="ID_Farma" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prodajas">
+            <EntityTypeMapping TypeName="Model.Prodaja">
+              <MappingFragment StoreEntitySet="Prodaja">
+                <ScalarProperty Name="ID_Prodaja" ColumnName="ID_Prodaja" />
+                <ScalarProperty Name="Lokacija" ColumnName="Lokacija" />
+                <ScalarProperty Name="Količina" ColumnName="Količina" />
+                <ScalarProperty Name="Zarada" ColumnName="Zarada" />
+                <ScalarProperty Name="Proizvod" ColumnName="Proizvod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prodaja_Životinje">
+            <EntityTypeMapping TypeName="Model.Prodaja_Životinje">
+              <MappingFragment StoreEntitySet="Prodaja-Životinje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Prodaja" ColumnName="ID_Prodaja" />
+                <ScalarProperty Name="ID_Životinje" ColumnName="ID_Životinje" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prod_biljke">
+            <EntityTypeMapping TypeName="Model.Prod_biljke">
+              <MappingFragment StoreEntitySet="Prod-biljke">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Biljke" ColumnName="ID_Biljke" />
+                <ScalarProperty Name="ID_Prodaja" ColumnName="ID_Prodaja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rad_za_drugogas">
+            <EntityTypeMapping TypeName="Model.Rad_za_drugoga">
+              <MappingFragment StoreEntitySet="Rad za drugoga">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="datum_vrijeme" ColumnName="datum vrijeme" />
+                <ScalarProperty Name="zarada" ColumnName="zarada" />
+                <ScalarProperty Name="trajanje" ColumnName="trajanje" />
+                <ScalarProperty Name="id_stroj" ColumnName="id_stroj" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Radnjas">
+            <EntityTypeMapping TypeName="Model.Radnja">
+              <MappingFragment StoreEntitySet="Radnja">
+                <ScalarProperty Name="id_radnje" ColumnName="id_radnje" />
+                <ScalarProperty Name="naziv" ColumnName="naziv" />
+                <ScalarProperty Name="trosak" ColumnName="trosak" />
+                <ScalarProperty Name="dobit" ColumnName="dobit" />
+                <ScalarProperty Name="pocetak_radnje" ColumnName="pocetak_radnje" />
+                <ScalarProperty Name="kraj_radnje" ColumnName="kraj_radnje" />
+                <ScalarProperty Name="ID_Zemljište" ColumnName="ID_Zemljište" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Strojs">
+            <EntityTypeMapping TypeName="Model.Stroj">
+              <MappingFragment StoreEntitySet="Stroj">
+                <ScalarProperty Name="ID_Stroj" ColumnName="ID_Stroj" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+                <ScalarProperty Name="Nabavna_vrijednost" ColumnName="Nabavna_vrijednost" />
+                <ScalarProperty Name="Trenutna_vrijednost" ColumnName="Trenutna_vrijednost" />
+                <ScalarProperty Name="Dodatna_oprema" ColumnName="Dodatna_oprema" />
+                <ScalarProperty Name="Korištenje_od" ColumnName="Korištenje_od" />
+                <ScalarProperty Name="Korištenje_do" ColumnName="Korištenje_do" />
+                <ScalarProperty Name="Lokacija_korištenja" ColumnName="Lokacija_korištenja" />
+                <ScalarProperty Name="Zarada_od_rada_korištenja" ColumnName="Zarada_od_rada_korištenja" />
+                <ScalarProperty Name="ID_Farma" ColumnName="ID_Farma" />
+                <ScalarProperty Name="ID_Kupnja" ColumnName="ID_Kupnja" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zemljište">
+            <EntityTypeMapping TypeName="Model.Zemljište">
+              <MappingFragment StoreEntitySet="Zemljište">
+                <ScalarProperty Name="ID_Zemljište" ColumnName="ID_Zemljište" />
+                <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+                <ScalarProperty Name="Lokacija" ColumnName="Lokacija" />
+                <ScalarProperty Name="Korišteno_od" ColumnName="Korišteno_od" />
+                <ScalarProperty Name="Korišteno_do" ColumnName="Korišteno_do" />
+                <ScalarProperty Name="Pogodnost" ColumnName="Pogodnost" />
+                <ScalarProperty Name="ID_Farma" ColumnName="ID_Farma" />
+                <ScalarProperty Name="Vlasnik" ColumnName="Vlasnik" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Životinja">
+            <EntityTypeMapping TypeName="Model.Životinja">
+              <MappingFragment StoreEntitySet="Životinja">
+                <ScalarProperty Name="ID_Životinje" ColumnName="ID_Životinje" />
+                <ScalarProperty Name="Ime" ColumnName="Ime" />
+                <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+                <ScalarProperty Name="Proizvodi" ColumnName="Proizvodi" />
+                <ScalarProperty Name="Označena" ColumnName="Označena" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

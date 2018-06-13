@@ -1,0 +1,45 @@
+﻿@model IEnumerable<PI08_aplikacija.Models.Prod_biljke>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Prodaja_biljke</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Biljke.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Biljke1.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prodaja.Lokacija)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Biljke.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Biljke1.Naziv)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prodaja.Lokacija)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

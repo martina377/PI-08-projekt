@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PI08_aplikacija.Models.Mlijekomat>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mlijekomat</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Lokacija)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Punjenje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pražnjenje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Troškovi_održavanja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zarada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kapacitet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farma.Farma1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lokacija)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Punjenje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pražnjenje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Troškovi_održavanja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zarada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kapacitet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farma.Farma1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Mlijekomat }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Mlijekomat }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Mlijekomat })
+        </td>
+    </tr>
+}
+
+</table>

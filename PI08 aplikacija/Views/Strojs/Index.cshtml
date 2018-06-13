@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PI08_aplikacija.Models.Stroj>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Stroj</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ime)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vlasnik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nabavna_vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Trenutna_vrijednost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dodatna_oprema)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Korištenje_od)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Korištenje_do)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lokacija_korištenja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Zarada_od_rada_korištenja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Farma.Farma1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kupnja.Vrsta_proizvoda)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Vlasnik)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nabavna_vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Trenutna_vrijednost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Dodatna_oprema)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korištenje_od)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Korištenje_do)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lokacija_korištenja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zarada_od_rada_korištenja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Farma.Farma1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kupnja.Vrsta_proizvoda)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_Stroj }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_Stroj }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_Stroj })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ab07882ed3334e2d90ca90671373b86a" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Biljke" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Farma" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Hrana" Width="1.5" PointX="5.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Hrana_Životinja" Width="1.5" PointX="8" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Kupnja" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Mlijekomat" Width="1.5" PointX="12" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Prodaja" Width="1.5" PointX="5.25" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Prodaja_Životinje" Width="1.5" PointX="10" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Prod_biljke" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Rad_za_drugoga" Width="1.5" PointX="17.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Radnja" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Stroj" Width="1.5" PointX="15" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagram" Width="1.5" PointX="7.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Zemljište" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Životinja" Width="1.5" PointX="5.75" PointY="12.125" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Biljke_Radnja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Biljke_Zemljište" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Prod_biljke_Biljke" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Prod_biljke_Biljke1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Mlijekomat_Farma" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Stroj_Farma" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Hrana_Kupnja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Hrana_Životinja_Hrana" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Hrana_Životinja_Životinja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Stroj_Kupnja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Prodaja_Životinje_Prodaja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Prod_biljke_Prodaja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Prodaja_Životinje_Životinja" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Rad_za_drugog_Stroj" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Radnja_Zemljište" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

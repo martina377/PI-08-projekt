@@ -1,0 +1,72 @@
+﻿@model PI08_aplikacija.Models.Životinja
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Životinja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proizvodi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proizvodi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Označena)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Označena)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                ID_Prodaja
+            </th>
+            <th>
+                ID_Životinje
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Prodaja_Životinje)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_Prodaja)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID_Životinje)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Životinje }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

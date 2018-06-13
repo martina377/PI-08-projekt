@@ -1,0 +1,70 @@
+﻿@model PI08_aplikacija.Models.Farma
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Farma</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Farma1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Farma1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lokacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lokacija)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vlasnik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vlasnik)
+        </dd>
+
+    </dl>
+    <table class="table">
+        <tr>
+            <th>
+                Lokacija
+            </th>
+            <th>
+                Zarada
+            </th>
+            <th>
+                Kapacitet
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Mlijekomats)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lokacija)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zarada)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kapacitet)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Farma }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

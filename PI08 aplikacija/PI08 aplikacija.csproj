@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\PI08 aplikacija.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,16 +47,36 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -103,6 +124,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -148,9 +172,84 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\SwaggerConfig.cs" />
+    <Compile Include="Controllers\BiljkesController.cs" />
+    <Compile Include="Controllers\FarmasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HranasController.cs" />
+    <Compile Include="Controllers\Hrana_ŽivotinjaController.cs" />
+    <Compile Include="Controllers\KupnjasController.cs" />
+    <Compile Include="Controllers\MlijekomatsController.cs" />
+    <Compile Include="Controllers\ProdajasController.cs" />
+    <Compile Include="Controllers\Prodaja_ŽivotinjeController.cs" />
+    <Compile Include="Controllers\Prod_biljkeController.cs" />
+    <Compile Include="Controllers\RadnjasController.cs" />
+    <Compile Include="Controllers\Rad_za_drugogaController.cs" />
+    <Compile Include="Controllers\StrojsController.cs" />
+    <Compile Include="Controllers\ZemljišteController.cs" />
+    <Compile Include="Controllers\ŽivotinjaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Biljke.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Farma.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hrana.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hrana_Životinja.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kupnja.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mlijekomat.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PI08Model.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PI08Model.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PI08Model.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PI08Model.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PI08Model.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prodaja.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prodaja_Životinje.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Prod_biljke.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Radnja.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rad_za_drugoga.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stroj.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zemljište.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Životinja.cs">
+      <DependentUpon>PI08Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -163,10 +262,27 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\PI08Model.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>PI08Model.Context.cs</LastGenOutput>
+      <DependentUpon>PI08Model.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PI08Model.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PI08Model.edmx</DependentUpon>
+      <LastGenOutput>PI08Model.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\PI08Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PI08Model.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PI08Model.edmx.diagram">
+      <DependentUpon>PI08Model.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -193,10 +309,80 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Biljkes\Create.cshtml" />
+    <Content Include="Views\Biljkes\Delete.cshtml" />
+    <Content Include="Views\Biljkes\Details.cshtml" />
+    <Content Include="Views\Biljkes\Edit.cshtml" />
+    <Content Include="Views\Biljkes\Index.cshtml" />
+    <Content Include="Views\Farmas\Create.cshtml" />
+    <Content Include="Views\Farmas\Delete.cshtml" />
+    <Content Include="Views\Farmas\Details.cshtml" />
+    <Content Include="Views\Farmas\Edit.cshtml" />
+    <Content Include="Views\Farmas\Index.cshtml" />
+    <Content Include="Views\Hranas\Create.cshtml" />
+    <Content Include="Views\Hranas\Delete.cshtml" />
+    <Content Include="Views\Hranas\Details.cshtml" />
+    <Content Include="Views\Hranas\Edit.cshtml" />
+    <Content Include="Views\Hranas\Index.cshtml" />
+    <Content Include="Views\Hrana_Životinja\Create.cshtml" />
+    <Content Include="Views\Hrana_Životinja\Delete.cshtml" />
+    <Content Include="Views\Hrana_Životinja\Details.cshtml" />
+    <Content Include="Views\Hrana_Životinja\Edit.cshtml" />
+    <Content Include="Views\Hrana_Životinja\Index.cshtml" />
+    <Content Include="Views\Kupnjas\Create.cshtml" />
+    <Content Include="Views\Kupnjas\Delete.cshtml" />
+    <Content Include="Views\Kupnjas\Details.cshtml" />
+    <Content Include="Views\Kupnjas\Edit.cshtml" />
+    <Content Include="Views\Kupnjas\Index.cshtml" />
+    <Content Include="Views\Mlijekomats\Create.cshtml" />
+    <Content Include="Views\Mlijekomats\Delete.cshtml" />
+    <Content Include="Views\Mlijekomats\Details.cshtml" />
+    <Content Include="Views\Mlijekomats\Edit.cshtml" />
+    <Content Include="Views\Mlijekomats\Index.cshtml" />
+    <Content Include="Views\Prod_biljke\Create.cshtml" />
+    <Content Include="Views\Prod_biljke\Delete.cshtml" />
+    <Content Include="Views\Prod_biljke\Details.cshtml" />
+    <Content Include="Views\Prod_biljke\Edit.cshtml" />
+    <Content Include="Views\Prod_biljke\Index.cshtml" />
+    <Content Include="Views\Prodajas\Create.cshtml" />
+    <Content Include="Views\Prodajas\Delete.cshtml" />
+    <Content Include="Views\Prodajas\Details.cshtml" />
+    <Content Include="Views\Prodajas\Edit.cshtml" />
+    <Content Include="Views\Prodajas\Index.cshtml" />
+    <Content Include="Views\Prodaja_Životinje\Create.cshtml" />
+    <Content Include="Views\Prodaja_Životinje\Delete.cshtml" />
+    <Content Include="Views\Prodaja_Životinje\Details.cshtml" />
+    <Content Include="Views\Prodaja_Životinje\Edit.cshtml" />
+    <Content Include="Views\Prodaja_Životinje\Index.cshtml" />
+    <Content Include="Views\Rad_za_drugoga\Create.cshtml" />
+    <Content Include="Views\Rad_za_drugoga\Delete.cshtml" />
+    <Content Include="Views\Rad_za_drugoga\Details.cshtml" />
+    <Content Include="Views\Rad_za_drugoga\Edit.cshtml" />
+    <Content Include="Views\Rad_za_drugoga\Index.cshtml" />
+    <Content Include="Views\Radnjas\Create.cshtml" />
+    <Content Include="Views\Radnjas\Delete.cshtml" />
+    <Content Include="Views\Radnjas\Details.cshtml" />
+    <Content Include="Views\Radnjas\Edit.cshtml" />
+    <Content Include="Views\Radnjas\Index.cshtml" />
+    <Content Include="Views\Strojs\Create.cshtml" />
+    <Content Include="Views\Strojs\Delete.cshtml" />
+    <Content Include="Views\Strojs\Details.cshtml" />
+    <Content Include="Views\Strojs\Edit.cshtml" />
+    <Content Include="Views\Strojs\Index.cshtml" />
+    <Content Include="Views\Zemljište\Create.cshtml" />
+    <Content Include="Views\Zemljište\Delete.cshtml" />
+    <Content Include="Views\Zemljište\Details.cshtml" />
+    <Content Include="Views\Zemljište\Edit.cshtml" />
+    <Content Include="Views\Zemljište\Index.cshtml" />
+    <Content Include="Views\Životinja\Create.cshtml" />
+    <Content Include="Views\Životinja\Delete.cshtml" />
+    <Content Include="Views\Životinja\Details.cshtml" />
+    <Content Include="Views\Životinja\Edit.cshtml" />
+    <Content Include="Views\Životinja\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\SwaggerConfig\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -210,6 +396,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

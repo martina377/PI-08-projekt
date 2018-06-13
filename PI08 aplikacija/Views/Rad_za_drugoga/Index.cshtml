@@ -1,0 +1,51 @@
+﻿@model IEnumerable<PI08_aplikacija.Models.Rad_za_drugoga>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Rad_za_drugoga</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.datum_vrijeme)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zarada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trajanje)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stroj.Ime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.datum_vrijeme)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.zarada)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trajanje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stroj.Ime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

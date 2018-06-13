@@ -1,0 +1,42 @@
+﻿@model PI08_aplikacija.Models.Prod_biljke
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Prod_biljke</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Biljke.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biljke.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Biljke1.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Biljke1.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prodaja.Lokacija)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prodaja.Lokacija)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

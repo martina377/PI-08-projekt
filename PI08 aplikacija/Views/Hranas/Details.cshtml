@@ -1,0 +1,58 @@
+﻿@model PI08_aplikacija.Models.Hrana
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Hrana</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrsta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrsta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Količina)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Količina)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Troškovi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Troškovi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Vrijeme_kupovine)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vrijeme_kupovine)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kupnja.Vrsta_proizvoda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kupnja.Vrsta_proizvoda)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID_Hrana }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
